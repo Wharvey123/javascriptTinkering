@@ -7,46 +7,40 @@
         </div>
 
         <div class="grid grid-cols-4 gap-2">
-          <!-- All X buttons in a single color section -->
-          <button @click="applyPercentage" class="bg-red-600 text-white text-2xl p-4 rounded-md hover:bg-red-500">%</button>
-          <button @click="clearEntry" class="bg-red-600 text-white text-2xl p-4 rounded-md hover:bg-red-500">CE</button>
-          <button @click="clearDisplay" class="bg-red-600 text-white text-2xl p-4 rounded-md hover:bg-red-500">C</button>
-          <button @click="deleteDigit" class="bg-red-600 text-white text-2xl p-4 rounded-md hover:bg-red-500">DEL</button>
+          <button @click="applyPercentage" data-testid="operation-percent" class="bg-red-600 text-white text-2xl p-4 rounded-md hover:bg-red-500">%</button>
+          <button @click="clearEntry" data-testid="clear" class="bg-red-600 text-white text-2xl p-4 rounded-md hover:bg-red-500">CE</button>
+          <button @click="clearDisplay" data-testid="clear-all" class="bg-red-600 text-white text-2xl p-4 rounded-md hover:bg-red-500">C</button>
+          <button @click="deleteDigit" data-testid="delete" class="bg-red-600 text-white text-2xl p-4 rounded-md hover:bg-red-500">DEL</button>
 
-          <button @click="cube" class="bg-blue-600 text-white text-2xl p-4 rounded-md hover:bg-blue-500">x³</button>
-          <button @click="square" class="bg-blue-600 text-white text-2xl p-4 rounded-md hover:bg-blue-500">x²</button>
-          <button @click="sqrt" class="bg-blue-600 text-white text-2xl p-4 rounded-md hover:bg-blue-500">√x</button>
+          <button @click="cube" data-testid="operation-cube" class="bg-blue-600 text-white text-2xl p-4 rounded-md hover:bg-blue-500">x³</button>
+          <button @click="square" data-testid="operation-squared" class="bg-blue-600 text-white text-2xl p-4 rounded-md hover:bg-blue-500">x²</button>
+          <button @click="sqrt" data-testid="operation-sqrt" class="bg-blue-600 text-white text-2xl p-4 rounded-md hover:bg-blue-500">√x</button>
 
-          <!-- Dividing button -->
-          <button @click="inputOperation('/')" class="bg-blue-600 text-white text-2xl p-4 rounded-md hover:bg-blue-500">÷</button>
+          <button @click="inputOperation('/')" data-testid="operation-divide" class="bg-blue-600 text-white text-2xl p-4 rounded-md hover:bg-blue-500">÷</button>
 
-          <!-- Number buttons -->
-          <button @click="inputDigit('7')" class="bg-red-700 text-white text-2xl p-4 rounded-md hover:bg-red-600">7</button>
-          <button @click="inputDigit('8')" class="bg-red-700 text-white text-2xl p-4 rounded-md hover:bg-red-600">8</button>
-          <button @click="inputDigit('9')" class="bg-red-700 text-white text-2xl p-4 rounded-md hover:bg-red-600">9</button>
+          <button @click="inputDigit('7')" data-testid="digit-7" class="bg-red-700 text-white text-2xl p-4 rounded-md hover:bg-red-600">7</button>
+          <button @click="inputDigit('8')" data-testid="digit-8" class="bg-red-700 text-white text-2xl p-4 rounded-md hover:bg-red-600">8</button>
+          <button @click="inputDigit('9')" data-testid="digit-9" class="bg-red-700 text-white text-2xl p-4 rounded-md hover:bg-red-600">9</button>
 
-          <!-- Multiply button -->
-          <button @click="inputOperation('*')" class="bg-blue-600 text-white text-2xl p-4 rounded-md hover:bg-blue-500">×</button>
+          <button @click="inputOperation('*')" data-testid="operation-multiply" class="bg-blue-600 text-white text-2xl p-4 rounded-md hover:bg-blue-500">×</button>
 
-          <button @click="inputDigit('4')" class="bg-red-700 text-white text-2xl p-4 rounded-md hover:bg-red-600">4</button>
-          <button @click="inputDigit('5')" class="bg-red-700 text-white text-2xl p-4 rounded-md hover:bg-red-600">5</button>
-          <button @click="inputDigit('6')" class="bg-red-700 text-white text-2xl p-4 rounded-md hover:bg-red-600">6</button>
+          <button @click="inputDigit('4')" data-testid="digit-4" class="bg-red-700 text-white text-2xl p-4 rounded-md hover:bg-red-600">4</button>
+          <button @click="inputDigit('5')" data-testid="digit-5" class="bg-red-700 text-white text-2xl p-4 rounded-md hover:bg-red-600">5</button>
+          <button @click="inputDigit('6')" data-testid="digit-6" class="bg-red-700 text-white text-2xl p-4 rounded-md hover:bg-red-600">6</button>
 
-          <!-- Subtract button -->
-          <button @click="inputOperation('-')" class="bg-blue-600 text-white text-2xl p-4 rounded-md hover:bg-blue-500">-</button>
+          <button @click="inputOperation('-')" data-testid="operation-subtract" class="bg-blue-600 text-white text-2xl p-4 rounded-md hover:bg-blue-500">-</button>
 
-          <button @click="inputDigit('1')" class="bg-red-700 text-white text-2xl p-4 rounded-md hover:bg-red-600">1</button>
-          <button @click="inputDigit('2')" class="bg-red-700 text-white text-2xl p-4 rounded-md hover:bg-red-600">2</button>
-          <button @click="inputDigit('3')" class="bg-red-700 text-white text-2xl p-4 rounded-md hover:bg-red-600">3</button>
+          <button @click="inputDigit('1')" data-testid="digit-1" class="bg-red-700 text-white text-2xl p-4 rounded-md hover:bg-red-600">1</button>
+          <button @click="inputDigit('2')" data-testid="digit-2" class="bg-red-700 text-white text-2xl p-4 rounded-md hover:bg-red-600">2</button>
+          <button @click="inputDigit('3')" data-testid="digit-3" class="bg-red-700 text-white text-2xl p-4 rounded-md hover:bg-red-600">3</button>
 
-          <!-- Add button -->
-          <button @click="inputOperation('+')" class="bg-blue-600 text-white text-2xl p-4 rounded-md hover:bg-blue-500">+</button>
+          <button @click="inputOperation('+')" data-testid="operation-add" class="bg-blue-600 text-white text-2xl p-4 rounded-md hover:bg-blue-500">+</button>
 
-          <button @click="power" class="bg-black text-white text-2xl p-4 rounded-md hover:bg-gray-800">x^y</button>
-          <button @click="inputDigit('0')" class="bg-red-700 text-white text-2xl p-4 rounded-md hover:bg-red-600">0</button>
-          <button @click="inputDecimal" class="bg-red-700 text-white text-2xl p-4 rounded-md hover:bg-red-600">,</button>
+          <button @click="power" data-testid="operation-power" class="bg-black text-white text-2xl p-4 rounded-md hover:bg-gray-800">x^y</button>
+          <button @click="inputDigit('0')" data-testid="digit-0" class="bg-red-700 text-white text-2xl p-4 rounded-md hover:bg-red-600">0</button>
+          <button @click="inputDecimal" data-testid="decimal" class="bg-red-700 text-white text-2xl p-4 rounded-md hover:bg-red-600">,</button>
 
-          <button @click="calculateResult" class="bg-blue-800 text-white text-2xl p-4 rounded-md col-span-4 hover:bg-blue-700 relative overflow-hidden">
+          <button @click="calculateResult" data-testid="equal" class="bg-blue-800 text-white text-2xl p-4 rounded-md col-span-4 hover:bg-blue-700 relative overflow-hidden">
             <div class="web-bg"></div>=</button>
         </div>
       </div>
