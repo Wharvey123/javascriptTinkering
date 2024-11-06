@@ -76,6 +76,15 @@ function inputDigit(digit) {
   }
 }
 
+function inputDecimal() {
+  const lastNumber = displayValue.value.split(/[\+\-\*\/\%]/).pop();
+  // Check if the last number doesn't already contain a comma
+  if (!lastNumber.includes(',')) {
+    displayValue.value += ',';  // Use a comma as the decimal separator
+    lastOperation = false;
+  }
+}
+
 function inputOperation(operator) {
   const operators = ['+', '-', '*', '/'];
   if (lastOperation) lastOperation = false;
@@ -88,10 +97,8 @@ function inputOperation(operator) {
 
 function calculateResult() {
   try {
-    const result = displayValue.value.replace(',', '.')
-        .replace(/(\d+)\^(\d+)/g, (match, base, exponent) => `Math.pow(${base}, ${exponent})`);
-
-    displayValue.value = eval(result).toString().replace('.', ',');
+    // Replace commas with dots for proper evaluation
+    displayValue.value = eval(displayValue.value.replace(/,/g, '.')).toString().replace('.', ',');
     lastOperation = true;
   } catch {
     displayValue.value = 'Error';
